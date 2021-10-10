@@ -1,0 +1,607 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>美林时钟001</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h4 id='经济局势逻辑推演及股市操作计划2021-2023）'><span>经济局势逻辑推演及股市操作计划（2021-2023）</span></h4><p><span>来自</span><a href='https://xueqiu.com/5603624715/column'><span>求球的雪球专栏</span></a></p><p><span>*</span><strong><a href='https://xueqiu.com/S/MER-K?from=status_stock_match'><span>美林</span></a><a href='https://xueqiu.com/S/SZ399391?from=status_stock_match'><span>投资时钟</span></a><span>是建立在美国过往40年经济周期划分的大类资产配置工具。但中国经济受政策调控的影响太大，在市场从有序走向无序时，政府总会提早一步进行调控。因此中国版的美林时钟以货币（M2）和信用（利率）作为坐标。</span><span>*</span></strong></p><h4 id='中国版美林时钟'><span>中国版美林时钟</span></h4><p><img src="https://xqimg.imedao.com/17a7748a1955725a3fe77e0e.jpg!800.jpg" referrerpolicy="no-referrer" alt="img"></p><h4 id='逻辑推演'><span>逻辑推演</span></h4><p><strong><span>1.中国首先复苏</span></strong></p><p><strong><span>新冠疫情就相当于一场波及全球的世界大战，</span></strong><span>最先爆发的中国反而是第一个也是最好的一个控制了疫情，开始全面复工复产，中国首先从衰退进入复苏。</span></p><p><span>彼时，世界在蔓延开来的新冠疫情下陷入混乱，个性自由主义思想洗脑下，各国民众游行反抗管制，进而造成了更大的传染，进一步混乱。</span><strong><span>中国的工厂正好承接全世界的订单，虹吸美元潮水（用于工业制造的钢铁，冷轧热轧明显强于用于基建的螺纹钢）。</span></strong></p><p><strong><span>2.过热</span></strong></p><p><strong><span>中国经济进入过热阶段，许多工厂大面积扩产，而*</span></strong><span>*国外开始全面接种疫苗，逐步复工复产争抢被中国暂时替代的产业。**全世界工厂都在争抢原材料，有色金属易涨难跌，就最近</span><a href='https://xueqiu.com/S/SZ399979?from=status_stock_match'><span>大宗商品</span></a><span>都普涨50%了，等国外全部复工复产，到时不知会出现怎样的高点！</span></p><p><strong><span>3.滞胀</span></strong></p><p><span>全世界产能过剩，但因为原材料大涨，商品价格不跌反涨，通胀高企，人工成本也随之上升，经济进入滞胀阶段。商品滞销，工厂利润大减，公司裁员，失业率上升，经济陷入衰退。</span></p><p><strong><span>4.国家调控</span></strong></p><p><span>俗话说天下才有八斗在央行。央行一定会前瞻性调控，紧信用给经济降温。中国先进入衰退，股市进入负反馈循环，业绩下行叠加利率上升带来的估值降低，戴维斯双杀，开始慢慢熊市。</span></p><p><strong><span>5.产业升级</span></strong></p><p><span>在世界衰退时，因为中国比国外快一步，国内公司累积了大量资本可以投入到研发和收购中，完成国内产业升级。</span></p><h4 id='投资机会'><span>投资机会</span></h4><p><span>2021年中国经济开始走向过热，工厂大量投资扩产。国外开始经济复苏，停置产能全部重启，市场需要大量的工业中间品:提供冷轧，热轧的</span><a href='https://xueqiu.com/S/SH600782?from=status_stock_match'><span>新钢股份</span></a><span>，</span><a href='https://xueqiu.com/S/SH600019?from=status_stock_match'><span>宝钢股份</span></a><span>；化工原材料的</span><a href='https://xueqiu.com/S/SZ000830?from=status_stock_match'><span>鲁西化工</span></a><span>，</span><a href='https://xueqiu.com/S/SH600309?from=status_stock_match'><span>万华化学</span></a><span>；提供屏幕的</span><a href='https://xueqiu.com/S/SZ000725?from=status_stock_match'><span>京东方A</span></a><span>，tcl，深天马；包装造纸的</span><a href='https://xueqiu.com/S/SZ000488?from=status_stock_match'><span>晨鸣纸业</span></a><span>。</span></p><p><span>2022年全世界工厂全面复工复产，争抢原材料，经济过热。提供最基础原材料的有色金属，能源（</span><a href='https://xueqiu.com/S/SH600985?from=status_stock_match'><span>淮北矿业</span></a><span>，</span><a href='https://xueqiu.com/S/SH601225?from=status_stock_match'><span>陕西煤业</span></a><span>，</span><a href='https://xueqiu.com/S/00883?from=status_stock_match'><span>中国海洋石油</span></a><span>）开始暴涨，07年历史再次重演，煤飞色舞。</span></p><p><strong><span>最重要的:贯穿复苏过热到滞胀初期的周期总龙头，海洋集运业:</span><a href='https://xueqiu.com/S/SH601919?from=status_stock_match'><span>中远海控</span></a></strong></p><p><strong><span>全球商品贸易量大增，运价居高不下，海控四季度也许能创造一个无法理解的超高利润。</span></strong></p><h4 id='一切过去后现金才是最好的的选择-1'><span>一切过去后，现金才是最好的的选择！</span></h4><h4 id='一切过去后现金才是最好的的选择-2'><span>一切过去后，现金才是最好的的选择！</span></h4><h4 id='一切过去后现金才是最好的的选择-3'><span>一切过去后，现金才是最好的的选择！</span></h4><p><a href='http://xueqiu.com/S/SH600782'><span>$新钢股份(SH600782)$</span></a><span> </span><a href='http://xueqiu.com/S/SH601919'><span>$中远海控(SH601919)$</span></a><span> </span><a href='http://xueqiu.com/S/SH601899'><span>$紫金矿业(SH601899)$</span></a><span> </span><a href='http://xueqiu.com/n/润哥'><span>@润哥</span></a><span> </span><a href='http://xueqiu.com/n/泡沫艺术家'><span>@泡沫艺术家</span></a><span> </span><a href='http://xueqiu.com/n/超级鹿鼎公'><span>@超级鹿鼎公</span></a></p><h4 id='美林时钟'><span>美林时钟</span></h4><p><img src="https://xqimg.imedao.com/17a77489f5e5796b3fcc6881.jpg!800.jpg" referrerpolicy="no-referrer" alt="img"></p><p><span>作者：求球</span>
+<span>链接：</span><a href='https://xueqiu.com/5603624715/176770621'><span>网页链接</span></a>
+<span>来源：雪球</span>
+<span>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span>
+<span>风险提示：本文所提到的观点仅代表个人的意见，所涉及标的不作推荐，据此买卖，风险自负。</span></p><p><a href='https://xueqiu.com/9654804196/189174885?page=3'><span>打赏</span></a></p><p><a href='https://xueqiu.com/9654804196/189174885?page=3#'><em><span></span></em></a><a href='https://xueqiu.com/9654804196/189174885?page=3#'><em><span></span></em></a></p><p><a href='https://xueqiu.com/9654804196/189174885?page=3#'><em><span></span></em><span>转发</span></a><a href='https://xueqiu.com/9654804196/189174885?page=3#'><em><span></span></em><span>赞</span></a><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>收藏</span></a></p><p><span>14 转发 · 12 评论 · 15 赞</span><a href='https://xueqiu.com/9654804196/189174885?page=3'><span>投诉</span></a></p><p><img src="https://xavatar.imedao.com/community/default/avatar.png!240x240.jpg" referrerpolicy="no-referrer" alt="img"></p><p>&nbsp;</p><p><span>评论...</span></p><p><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em></a></p><p><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em></a><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em></a><a href='javascript:;'><em><span></span></em></a></p><p><span>同时转发</span></p><h3 id='精彩评论2）'><span>精彩评论（2）</span></h3><p><a href='https://xueqiu.com/4105184971'><img src="https://xavatar.imedao.com/community/201910/1573886734084-1573886734211.jpg!240x240.jpg" referrerpolicy="no-referrer" alt="img"></a></p><p><a href='https://xueqiu.com/4105184971'><span>宝钢十五年</span></a><span>07-06 11:24</span></p><blockquote><p><span>@求球 ：</span></p><p><span>纸币的基础是以国家信用背书的，中国有全世界最完整的制造业为国家信用背书，中国又是控制疫情最好的国家，除非第三次世界大战，不然人民币实在没有崩盘的可能。 相对来说，毫无节制发债发钱的欧美更可能崩盘。另外以前没有出现过美元这种世界性纸币，以美国现在的军事和科技实力，短期内会有经济...</span></p><p><span>展开</span><em><span></span></em></p></blockquote><p><span>真逗，自己都不敢放开自由兑换，怎么替代人家？</span></p><p><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>赞(3)</span></a><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>打赏</span></a><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>回复</span></a></p><p><a href='https://xueqiu.com/9222280625'><img src="https://xavatar.imedao.com/community/20173/1492709684562-1492709698244.jpg!240x240.jpg" referrerpolicy="no-referrer" alt="img"></a></p><p><a href='https://xueqiu.com/9222280625'><span>泡沫艺术家</span></a><span>07-05 23:39</span></p><p><span>美林时钟体系有个问题，根本没有考虑过一种可能，滞涨之下突然纸币信用体系不是贬值，而是出现大的系统性崩溃。</span></p><p><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>赞(3)</span></a><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>打赏</span></a><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>回复</span></a></p><p><span>查看7条回复</span><em><span></span></em></p><h3 id='全部评论12）'><span>全部评论（12）</span></h3><p><a href='https://xueqiu.com/9654804196/189174885?page=3'><span>最近</span></a><a href='https://xueqiu.com/9654804196/189174885?page=3'><span>最早</span></a><a href='https://xueqiu.com/9654804196/189174885?page=3'><span>赞</span></a></p><p><a href='https://xueqiu.com/4947575708'><img src="https://xavatar.imedao.com/community/20187/1533187198561-1533187199347.jpg!240x240.jpg" referrerpolicy="no-referrer" alt="img"></a></p><p><a href='https://xueqiu.com/4947575708'><span>小毛屋</span></a><span>07-06 12:44</span></p><p><span>mark</span></p><p><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>赞</span></a><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>打赏</span></a><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>回复</span></a></p><p><a href='https://xueqiu.com/9222280625'><img src="https://xavatar.imedao.com/community/20173/1492709684562-1492709698244.jpg!240x240.jpg" referrerpolicy="no-referrer" alt="img"></a></p><p><a href='https://xueqiu.com/9222280625'><span>泡沫艺术家</span></a><span>07-06 11:26</span></p><blockquote><p><span>@泡沫艺术家 ：</span></p><p><span>美林时钟体系有个问题，根本没有考虑过一种可能，滞涨之下突然纸币信用体系不是贬值，而是出现大的系统性崩溃。</span></p></blockquote><p><span>我明显说的是美元，大宗只跟随美元周期。</span></p><p><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>赞(1)</span></a><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>打赏</span></a><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>回复</span></a></p><p><a href='https://xueqiu.com/4105184971'><img src="https://xavatar.imedao.com/community/201910/1573886734084-1573886734211.jpg!240x240.jpg" referrerpolicy="no-referrer" alt="img"></a></p><p><a href='https://xueqiu.com/4105184971'><span>宝钢十五年</span></a><span>07-06 11:24</span></p><blockquote><p><span>@求球 ：</span></p><p><span>纸币的基础是以国家信用背书的，中国有全世界最完整的制造业为国家信用背书，中国又是控制疫情最好的国家，除非第三次世界大战，不然人民币实在没有崩盘的可能。 相对来说，毫无节制发债发钱的欧美更可能崩盘。另外以前没有出现过美元这种世界性纸币，以美国现在的军事和科技实力，短期内会有经济...</span></p><p><span>展开</span><em><span></span></em></p></blockquote><p><span>真逗，自己都不敢放开自由兑换，怎么替代人家？</span></p><p><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>赞(3)</span></a><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>打赏</span></a><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>回复</span></a></p><p><a href='https://xueqiu.com/5603624715'><img src="https://xavatar.imedao.com/community/20210/1609939575922-1609939576293.jpeg!240x240.jpg" referrerpolicy="no-referrer" alt="img"></a></p><p><a href='https://xueqiu.com/5603624715'><span>求球</span></a><span>07-06 11:11</span></p><blockquote><p><span>@泡沫艺术家 ：</span></p><p><span>美林时钟体系有个问题，根本没有考虑过一种可能，滞涨之下突然纸币信用体系不是贬值，而是出现大的系统性崩溃。</span></p></blockquote><p><span>纸币的基础是以国家信用背书的，中国有全世界最完整的制造业为国家信用背书，中国又是控制疫情最好的国家，除非第三次世界大战，不然人民币实在没有崩盘的可能。</span></p><p><span>相对来说，毫无节制发债发钱的欧美更可能崩盘。另外以前没有出现过美元这种世界性纸币，以美国现在的军事和科技实力，短期内会有经济危机的可能，但整个美元体系系统性崩溃的可能太低，更大的可能是人民币逐步替代美元的双重共存世界货币体系。</span>
+<span>真出现美元崩盘，人民币和人民币定价的资产也一定是保值率最好，最安全的。</span><a href='http://xueqiu.com/S/SH601919'><span>$中远海控(SH601919)$</span></a><span> </span><a href='http://xueqiu.com/S/SH600019'><span>$宝钢股份(SH600019)$</span></a><span> </span><a href='http://xueqiu.com/S/SH601225'><span>$陕西煤业(SH601225)$</span></a></p><p><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>赞(2)</span></a><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>打赏</span></a><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>回复</span></a></p><p><a href='https://xueqiu.com/8163648967'><img src="https://xavatar.imedao.com/community/20158/1441889986640-1441890003426.jpg!240x240.jpg" referrerpolicy="no-referrer" alt="img"></a></p><p><a href='https://xueqiu.com/8163648967'><span>M-三个逗号</span></a><span>07-06 07:44</span></p><blockquote><p><span>@泡沫艺术家 ：</span></p><p><span>美林时钟体系有个问题，根本没有考虑过一种可能，滞涨之下突然纸币信用体系不是贬值，而是出现大的系统性崩溃。</span></p></blockquote><p><span>第四和第五不可能</span></p><p><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>赞</span></a><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>打赏</span></a><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>回复</span></a></p><p><a href='https://xueqiu.com/8256360656'><img src="https://xavatar.imedao.com/community/20218/1631370256111-1631370256291.jpeg!240x240.jpg" referrerpolicy="no-referrer" alt="img"></a></p><p><a href='https://xueqiu.com/8256360656'><span>技术派新手</span></a><span>07-06 07:08</span></p><p><span>点赞</span></p><p><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>赞</span></a><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>打赏</span></a><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>回复</span></a></p><p><a href='https://xueqiu.com/1401041164'><img src="https://xavatar.imedao.com/community/20193/1554531933351-1554531933526.jpeg!240x240.jpg" referrerpolicy="no-referrer" alt="img"></a></p><p><a href='https://xueqiu.com/1401041164'><span>一休学理</span></a><span>07-06 06:10</span></p><blockquote><p><span>@泡沫艺术家 ：</span></p><p><span>美林时钟体系有个问题，根本没有考虑过一种可能，滞涨之下突然纸币信用体系不是贬值，而是出现大的系统性崩溃。</span></p></blockquote><p><span>要相信d相信组织</span></p><p><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>赞</span></a><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>打赏</span></a><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>回复</span></a></p><p><a href='https://xueqiu.com/1244730012'><img src="https://xavatar.imedao.com/community/default/avatar.png!240x240.jpg" referrerpolicy="no-referrer" alt="img"></a></p><p><a href='https://xueqiu.com/1244730012'><span>修养生息</span></a><span>07-06 04:20</span></p><p><span>加息很困难，有可能直接从过热走到衰退，滞胀期很短。</span></p><p><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>赞</span></a><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>打赏</span></a><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>回复</span></a></p><p><a href='https://xueqiu.com/9938186098'><img src="https://xavatar.imedao.com/community/20218/1631016784086-1631016784559.jpg!240x240.jpg" referrerpolicy="no-referrer" alt="img"></a></p><p><a href='https://xueqiu.com/9938186098'><span>lancekin</span></a><span>07-06 01:04</span></p><blockquote><p><span>@泡沫艺术家 ：</span></p><p><span>美林时钟体系有个问题，根本没有考虑过一种可能，滞涨之下突然纸币信用体系不是贬值，而是出现大的系统性崩溃。</span></p></blockquote><p><span>系统性崩溃就是经济危机，滞涨来了</span></p><p><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>赞</span></a><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>打赏</span></a><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>回复</span></a></p><p><a href='https://xueqiu.com/6306190844'><img src="https://xavatar.imedao.com/community/20214/1622162062736-1622162062887.jpeg!240x240.jpg" referrerpolicy="no-referrer" alt="img"></a></p><p><a href='https://xueqiu.com/6306190844'><span>Megood</span></a><span>07-06 00:24</span></p><p><span>留着</span></p><p><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>赞</span></a><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>打赏</span></a><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>回复</span></a></p><p><a href='https://xueqiu.com/5335532918'><img src="https://xavatar.imedao.com/community/20218/1630590283482-1630590283674.jpeg!240x240.jpg" referrerpolicy="no-referrer" alt="img"></a></p><p><a href='https://xueqiu.com/5335532918'><span>作手城南新</span></a><span>07-05 23:46</span></p><blockquote><p><span>@泡沫艺术家 ：</span></p><p><span>美林时钟体系有个问题，根本没有考虑过一种可能，滞涨之下突然纸币信用体系不是贬值，而是出现大的系统性崩溃。</span></p></blockquote><p><span>很难吧 起码在目前的中国</span></p><p><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>赞</span></a><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>打赏</span></a><a href='https://xueqiu.com/9654804196/189174885?page=3'><em><span></span></em><span>回复</span></a></p><p><a href='https://xueqiu.com/9222280625'><img src="https://xavatar.imedao.com/community/20173/1492709684562-1492709698244.jpg!240x240.jpg" referrerpolicy="no-referrer" alt="img"></a></p><p><a href='https://xueqiu.com/9222280625'><span>泡沫艺术家</span></a><span>07-05 23:39</span></p><p><span>美林时钟体系有个问题，根本没有考虑过一种可能，滞涨之下突然纸币信用体系不是贬值，而是出现大的系统性崩溃。</span></p><p>&nbsp;</p><p><span>作者：tomdc</span>
+<span>链接：</span><a href='https://xueqiu.com/9654804196/189174885?page=3' target='_blank' class='url'>https://xueqiu.com/9654804196/189174885?page=3</a>
+<span>来源：雪球</span>
+<span>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span>
+<span>风险提示：本文所提到的观点仅代表个人的意见，所涉及标的不作推荐，据此买卖，风险自负。</span></p></div></div>
+</body>
+</html>
